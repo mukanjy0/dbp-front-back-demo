@@ -26,9 +26,9 @@ public class Group {
     private Set<Person> persons = new HashSet<>();
 
     // Constructors, getters, and setters
-    Group() {}
+    public Group() {}
 
-    Group(String name, Set<Person> persons) {
+    public Group(String name, Set<Person> persons) {
         this.name = name;
         this.persons = persons;
     }

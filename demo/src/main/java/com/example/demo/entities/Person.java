@@ -20,7 +20,7 @@ public class Person {
     private Set<Group> groups = new HashSet<>();
 
     // Constructors, getters, and setters
-    Person() {}
+    public Person() {}
 
     Person(String name, Set<Group> groups) {
         this.name = name;
