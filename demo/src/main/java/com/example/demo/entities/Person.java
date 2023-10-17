@@ -22,7 +22,7 @@ public class Person {
     // Constructors, getters, and setters
     public Person() {}
 
-    Person(String name, Set<Group> groups) {
+    public Person(String name, Set<Group> groups) {
         this.name = name;
         this.groups = groups;
     }
