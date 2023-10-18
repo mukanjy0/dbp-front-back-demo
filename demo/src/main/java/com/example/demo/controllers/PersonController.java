@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.dto.PersonDTO;
 import com.example.demo.entities.Group;
 import com.example.demo.entities.Person;
 import com.example.demo.services.PersonService;
+
 
 @Controller
 @RequestMapping("/persons")
@@ -25,9 +28,16 @@ public class PersonController {
     private PersonService personService;
 
     @GetMapping
-    public ResponseEntity<List<Person>> getAllPersons() {
+    public ResponseEntity<List<PersonDTO>> getAllPersons() {
         List<Person> persons = personService.getAllPersons();
-        return ResponseEntity.ok(persons);
+        List<PersonDTO> personDTOs = persons.stream()
+                                            .map(this::toDTO)
+                                            .collect(Collectors.toList());
+        return ResponseEntity.ok(personDTOs);
+    }
+
+    private PersonDTO toDTO(Person person) {
+        return new PersonDTO(person.getId(), person.getName());
     }
 
     @GetMapping("/{id}")

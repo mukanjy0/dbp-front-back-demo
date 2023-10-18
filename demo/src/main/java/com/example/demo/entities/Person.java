@@ -51,5 +51,5 @@ public class Person {
         this.groups = groups;
     }
 
-
 }
+
