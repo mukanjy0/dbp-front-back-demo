@@ -7,3 +7,32 @@ export const fetchGroupsAndPersons = () => {
     axios.get(`${BASE_URL}/persons`)
   ]);
 };
+
+export const addGroups = () => {
+  const body = {
+    name: document.getElementById('add-group').value
+  };
+  const headers = {
+    'Content-Type': 'application/json'
+  };
+  return axios.post(`${BASE_URL}/groups`, body, headers);
+}
+
+export const addPersons = () => {
+  const body = {
+    name: document.getElementById('add-person').value
+  };
+  const headers = {
+    'Content-Type': 'application/json'
+  };
+  return axios.post(`${BASE_URL}/persons`, body, headers);
+}
+
+export const addPersonToGroup = () => {
+  const groupId = document.getElementById('groupId').value;
+  const personId = document.getElementById('personId').value;
+  const url = `${BASE_URL}/groups/${groupId}/add-person/${personId}`;
+  
+  return axios.post(url);
+}
+
