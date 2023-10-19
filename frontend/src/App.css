@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.page-margin {
+  margin: 20px;
+}
+
+.form-control.short-input {
+  width: 200px;  
+  max-width: 200px; 
+  display: inline-block;
+  margin-right: 5px;
+}

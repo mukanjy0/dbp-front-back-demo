@@ -83,26 +83,32 @@ function App() {
   }
 
   return (
-    <>
+    <div className="page-margin">
+      <div className="d-flex flex-column align-items-start mb-2">
 
-      <input type="text" id="add-group" placeholder="type new group" className="form-control mb-2" />
+        <div className="d-flex mb-2">
+          <input type="text" id="add-group" placeholder="type new group" className="form-control short-input mr-2" />
+          <button onClick={LoadGroups} className="btn btn-primary">add group</button>
+        </div>
 
-      <button onClick={LoadGroups} className="btn btn-primary mb-2">add group</button>
+        <div className="d-flex mb-2">
+          <input type="text" id="add-person" placeholder="type new person" className="form-control short-input mr-2" />
+          <button onClick={LoadPersons} className="btn btn-primary">add person</button>
+        </div>
 
-      <input type="text" id="add-person" placeholder="type new person" className="form-control mb-2" />
+        <div className="d-flex align-items-center">
+          <input type="number" id="personId" placeholder="type person id" className="form-control short-input mr-2" />
+          <input type="number" id="groupId" placeholder="type group id" className="form-control short-input mr-2" />
+          <button onClick={LoadPersonToGroup} className="btn btn-success">add person to group</button>
+        </div>
 
-      <button onClick={LoadPersons} className="btn btn-primary mb-2">add person</button>
-
-      <br />
-
-      <input type="number" id="personId" placeholder="type person id" className="form-control mb-2" />
-      <input type="number" id="groupId" placeholder="type group id" className="form-control mb-2" />
-
-      <button onClick={LoadPersonToGroup} className="btn btn-success">add person to group</button>
+      </div>
 
 
-      <div style={{ width: '800px', height: '600px' }}>
+      <div style={{ border: '2px solid black', width: '804px', height: '550px' }}>
         <ForceGraph2D
+          width={800}
+          height={550}
           graphData={data}
           nodeAutoColorBy="color"
           nodeLabel="name"
@@ -110,7 +116,7 @@ function App() {
           linkDirectionalArrowRelPos={1}
         />
       </div>
-    </>
+    </div>
   );
 }
 
