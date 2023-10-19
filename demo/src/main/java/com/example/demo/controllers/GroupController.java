@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,10 +21,14 @@ import com.example.demo.services.GroupService;
 @Controller
 @RequestMapping("/groups")
 public class GroupController {
+    private final GroupService groupService;
 
     @Autowired
-    private GroupService groupService;
-    
+    public GroupController(GroupService groupService) {
+        Assert.notNull(groupService, "GroupService must not be null!");
+        this.groupService = groupService;
+    }
+
     @GetMapping
     public ResponseEntity<List<Group>> getAllGroups() {
         List<Group> groups = groupService.getAllGroups();
